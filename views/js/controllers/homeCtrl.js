@@ -14,6 +14,13 @@ define(['app'],function(app){
             goToPage: function(pageNum){
                 $scope.ctl.page = pageNum === 0 ? $scope.ctl.page+1:pageNum === -1?$scope.ctl.page -1:pageNum;
                 $scope.req.getArticleByPage();
+            },
+            toWrite: function() {
+                if($rootScope.user){
+                    $state.go('write');
+                } else {
+                    $state.go('login');
+                }
             }
         };
         $scope.views={
