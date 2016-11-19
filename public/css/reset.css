@@ -1,0 +1,10 @@
+/* CSS reset */
+body { 
+	margin:0;
+	padding:0;
+	font-family: Georgia, "Times New Roman",sans-serif;
+}
+html,body {
+	margin:0;
+	padding:0;
+}

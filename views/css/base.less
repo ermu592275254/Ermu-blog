@@ -1,0 +1,143 @@
+//***************************************reset********************************
+body{
+  background-color: @bg-color;
+  font-family: Arial, 'Times New Roman', 'Microsoft YaHei', SimHei;
+}
+body ::-moz-selection{background:@theme-color;color:#fff;}
+body ::selection{background:@theme-color;color:#fff;}
+//input:focus{
+//    border-color: @theme-color;
+//    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px @theme-color;
+//            box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px @theme-color;
+//}
+.active{
+  color: @theme-color!important;
+}
+h1,h2,h3,h4,h5,h6{
+  color: #000;
+}
+strong{
+  color: @theme-color;
+}
+blockquote{
+    color: #9d0006;
+}
+p{
+  text-align: justify;
+  line-height: 2em;
+  font-size: 16px;
+}
+em{
+  color: #1d1f21;
+}
+.btn[disabled]{
+  background-color: #858585;
+  border-color: #ccc;
+}
+//重写表格样式
+table {
+  border: 1px solid #888;
+  thead {
+    background-color: #cecece;
+  }
+  tbody {
+    td {
+      border: 1px solid #888;
+    }
+  }
+}
+
+/************************************覆盖bootstarp样式******************************/
+pre{
+  background-color: #000;
+  color: #928f8f;
+}
+.blog-header{
+  a{
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #0f0f0f;
+  }
+}
+/*************************公共样式************************/
+.content{
+  margin: 0 auto;
+  padding-bottom: 20px;
+  max-width: 70%;
+  min-height: 600px;
+}
+footer{
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #fff;
+}
+.navbar-green{
+  background-color: #fff;
+  border-color: #e7e7e7;
+}
+//清除浮动
+.clearfix:after {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden
+}
+.clearfix {
+  overflow:hidden;
+  _zoom:1;
+}
+// 垂直居中
+.vertacal-align {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+/***********************共用基本样式*********************/
+.c-b{
+  color: #000;
+}
+.theme-color{
+  color: @theme-color!important;
+}
+.btn-nop-nob{  //和bootstarp的btn样式一起用
+  padding: 0;
+  background: none;
+}
+.theme-a{
+  text-decoration: none;
+  color: @theme-color;
+}
+.no-p{
+  padding: 0!important;
+}
+.no-m{
+    margin: 0!important;
+}
+.bt{
+  border-top: 1px solid #ddd;
+}
+.br{
+    border-right: 1px solid #ddd;
+}
+.bb{
+  border-bottom: 1px solid #ddd;
+}
+.base-border{
+  border: 1px solid #ddd;
+}
+.bg-white{
+    background-color: #fff!important;
+}
+.fr{
+  float: right;
+}
+.fl{
+  float: left;
+}

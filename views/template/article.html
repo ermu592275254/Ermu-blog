@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="arcicle-content">
+            <div class="article-part row clearfix">
+                <h2>{{views.article.title}}</h2>
+                <span>时间：<span class="c-b">{{views.article.time | date:'yyyy-MM-dd HH:mm:ss'}}</span></span><br>
+                <span>作者：<a href="" class="c-b">{{views.article.author}}</a></span><br>
+                <span>主题：<span class="c-b">{{views.article.firstSort}} --- {{views.article.secondSort}}</span></span>
+                <span class="change-article" ng-if="views.article.author === user.name"><a href="" ng-click="req.delArticle()">删除</a>|<a href="" ng-click="ctl.toEdit()" >编辑</a></span>
+                <p class="article-content" ng-bind-html="views.article.post"></p>
+                <div>
+                    <span>阅读数（<a class="theme-a">{{views.article.readNum}}</a>）</span>
+                    <span>点赞(<a class="theme-a" ng-click="req.markLike()">{{views.article.goodNum?views.article.goodNum:0}}</a>)</span>
+                    <span>评论({{views.commentList.length}})</span>
+                    <button class="btn btn-nop-nob write-comment-btn"><i class="write-comment"></i><a class="theme-a" ng-click="ctl.showActCmtIpt = !ctl.showActCmtIpt">写评论</a></button>
+                </div>
+                <div class="comment-input-box" ng-show="ctl.showActCmtIpt">
+                    <div class="comment-input" contenteditable="plaintext-only" ng-model="views.inputContent" content-edit-able></div>
+                    <button class="btn btn-nop-nob" ng-click="ctl.showActCmtIpt = !ctl.showActCmtIpt">取消</button>
+                    <button class="btn btn-success comment-submit" ng-click="req.addComment(views.article._id,views.article.author,'article',1,1)">评论</button>
+                </div>
+                <!-- 评论模块 -->
+                <div class="article-comment-box" ng-if="views.commentList.length > 0">
+                    <i class="comment-box-angle"></i>
+                    <div class="comment-info-box" ng-repeat="item in views.commentList">
+                        <div class="comment-person">
+                            <a href="">{{item.owner_user}}</a><span ng-if="item.owner_user === views.article.author">(作者)</span>
+                        </div>
+                        <p class="comment-content">{{item.content}}</p>
+                        <div ng-class="{'bb': $index < views.commentList.length - 1 }">
+                            <span class="comment-time">{{item.created_time?item.created_time:'2016:10:10 12:12:30' | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                            <button class="btn comment-reply-btn" ng-click="ctl.showComment($index)"><i class="comment-reply-icon"></i>评论</button>
+                            <button class="btn comment-good-btn"><i class="comment-good-icon"></i>点赞</button>
+                            <!-- 第二层评论 -->
+                            <div class="article-comment-box" ng-if="ctl.showCommentNum === $index">
+                                <i class="comment-comment-angle"></i>
+                                <div class="comment-info-box">
+                                    <div ng-class="{'bb': $index < views.commentCList.length - 1 }" id="comment_box{{$index}}" ng-repeat="comment in views.commentCList">
+                                        <div class="comment-person">
+                                            <a href="">{{comment.owner_user}}</a>
+                                            <span ng-if="comment.owner_user === views.article.author">（作者）</span>
+                                            <span ng-if="comment.isReply">
+                                                <span>回复</span>
+                                                <a>{{comment.target_user}}</a>
+                                                <span ng-if="comment.target_user === views.article.author">（作者）</span>
+                                            </span>
+                                        </div>
+                                        <p class="comment-content">{{comment.content}}</p>
+                                        <span class="comment-time">{{comment.created_time | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                                        <button class="btn comment-reply-btn" ng-click="views.commentCList[$index].showInput = !views.commentCList[$index].showInput"><i class="comment-reply-icon"></i>回复</button>
+                                        <button class="btn comment-good-btn"><i class="comment-good-icon"></i>点赞</button>
+                                        <div class="comment-input-box" ng-if="views.commentCList[$index].showInput">
+                                            <div class="comment-input" contenteditable="plaintext-only" ng-model="views.commentCList[$index].inputContent" content-edit-able></div>
+                                            <button class="btn btn-nop-nob" ng-click="views.commentCList[$index].showInput = !views.commentCList[$index].showInput">取消</button>
+                                            <button class="btn btn-success comment-submit"  ng-click="req.addComment(item._id,comment.owner_user,'comment',3,$index)">评论</button>
+                                        </div>
+                                    </div>
+                                    <div class="comment-input-two">
+                                        <div class="comment-input-box no-p">
+                                            <div class="comment-input"  contenteditable="plaintext-only" ng-model="views.commentList[$index].inputContent" content-edit-able></div>
+                                            <button class="btn btn-success comment-submit"  ng-click="req.addComment(item._id,item.owner_user,'comment',2,$index)">评论</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

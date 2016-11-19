@@ -1,0 +1,63 @@
+<div class="login-reg-box">
+    <div class="login-header">登录</div>
+    <div class="login-box">
+        <form class="login-form">
+            <h3>用户登录</h3>
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" id="username" ng-model="views.username" placeholder="请输入用户名">
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" class="form-control" id="password" ng-model="views.password" placeholder="请输入密码">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="views.remember">记住我
+                </label>
+            </div>
+            <button class="btn btn-default" ng-click="req.submit()">登录</button>
+            <div class="login-fast">快速登录
+                <a class="glyphicon glyphicon-tree-deciduous" href=""></a>
+                <a class="glyphicon glyphicon-tower" href=""></a>
+                <a class="glyphicon glyphicon-send" href=""></a>
+                <a class="glyphicon glyphicon-copyright-mark" href=""></a>
+            </div>
+        </form>
+    </div>
+    <div class="register-box">
+        <form class="register-form">
+            <h3>用户注册</h3>
+            <div class="form-group has-feedback" ng-class="{'has-success': ctl.checkName === 1,'has-error': ctl.checkName === 0}">
+                <label for="registerUsername">用户名：</label>
+                <input type="text" class="form-control" id="registerUsername" ng-model="views.register.name" placeholder="字母开头,只能输入字母，数字,不少于6位">
+                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="ctl.checkName === 1"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="ctl.checkName === 0"></span>
+            </div>
+            <div class="form-group has-feedback"  ng-class="{'has-success': ctl.checkEmail === 1,'has-error': ctl.checkEmail === 0}">
+                <label for="registerEmail">邮箱：</label>
+                <input type="email" class="form-control" id="registerEmail" ng-model="views.register.email" placeholder="hello@ermublog.com">
+                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="ctl.checkEmail === 1"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="ctl.checkEmail === 0"></span>
+            </div>
+            <div class="form-group has-feedback" ng-class="{'has-success': ctl.checkPassword === 1,'has-error': ctl.checkPassword === 0}">
+                <label for="registerPassword">密码：</label>
+                <input type="password" class="form-control" id="registerPassword" ng-model="views.register.password" placeholder="不少于6位">
+                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="ctl.checkPassword === 1"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="ctl.checkPassword === 0"></span>
+            </div>
+            <div class="form-group has-feedback" ng-class="{'has-success': ctl.checkRepassword === 1,'has-error': ctl.checkRepassword === 0}">
+                <label for="repeatPassword">确认密码：</label>
+                <input type="password" class="form-control" id="repeatPassword" ng-model="views.register.rePassword" placeholder="请确保密码相同">
+                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="ctl.checkRepassword === 1"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="ctl.checkRepassword === 0"></span>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="views.register.agree">同意条款 <a href="https://segmentfault.com/tos" target="_blank">《服务条款》</a>
+                </label>
+            </div>
+            <button type="button" class="btn btn-default" ng-disabled="!views.register.agree" ng-click="req.register()">注册</button>
+        </form>
+    </div>
+</div>

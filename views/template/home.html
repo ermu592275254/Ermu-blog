@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-lg-9">
+        <ul class="page-header ul-page-header">
+            <li ng-repeat="item in views.categoryList[0].type"
+                ng-class="{active: ctl.headerLiNum === $index}"
+                ng-click="ctl.headerLiNum = $index">{{item}}</li>
+        </ul>
+        <div class="home-content">
+            <div class="article-box row" ng-repeat="item in views.articleList">
+                <div class="col-lg-9">
+                    <h2 ng-click="ctl.lookInfo(item)">{{item.title}}</h2>
+                    <p>{{item.post | cutContent}}</p>
+                    <span>{{item.author}}</span>　<span>{{item.time | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="col-lg-3">
+                    <img src="" alt="">
+                </div>
+            </div>
+            <nav>
+                <ul class="pagination" style="float: right">
+                    <li ng-if="ctl.page !== 1"><a href="" ng-click="ctl.goToPage(-1)">&laquo;</a></li>
+                    <li ng-repeat="item in ctl.pageCountList"><a href="" ng-click="ctl.goToPage(item)">{{item}}</a></li>
+                    <li ng-if="ctl.page !== ctl.pageCount"><a href="" ng-click="ctl.goToPage(0)">&raquo;</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="home-user-info">
+            <img src="images/ex_fulin.jpg" alt="userIcon" class="img-circle">
+            <h4>{{user.name?user.name:'请登录';}}</h4>
+            <a href="">评论</a>|<a href="">收藏</a>|<a href="">推刊</a>
+        </div>
+        <div class="home-article-type">
+            <a href=""><i class="glyphicon glyphicon-home"></i>推荐文章</a>
+            <a href=""><i class="glyphicon glyphicon-eye-open"></i>待续文章</a>
+            <a href=""><i class="glyphicon glyphicon-cog"></i>阅读设置</a>
+        </div>
+        <div class="home-news">
+            <a href="">编程狂人-第一四六期</a>
+            <span>今日更新</span>
+        </div>
+    </div>
+</div>

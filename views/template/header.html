@@ -1,0 +1,43 @@
+<nav class="navbar navbar-green navbar-static-top blog-header" ng-controller="headerCtrl" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">菜单</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="home" ng-click="ctl.activeNum = 0">二木同学的博客</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a class="color-change" ng-class="{active : ctl.activeNum === 0}" ui-sref="home" ng-click="ctl.activeNum = 0">前端技术</a></li>
+                <li><a class="color-change" ng-class="{active : ctl.activeNum === 1}" ui-sref="test"  ng-click="ctl.activeNum = 1">文艺青年</a></li>
+                <li><a class="color-change" ng-class="{active : ctl.activeNum === 2}"  ng-click="ctl.activeNum = 2">自娱自乐</a></li>
+                <li><a class="color-change" ng-class="{active : ctl.activeNum === 3}"  ng-click="ctl.activeNum = 3">热爱生活</a></li>
+                <!--<li><a class="color-change" ng-class="{active : ctl.activeNum === 4}" ui-sref="write" ng-click="ctl.activeNum = 4">写文章</a></li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">周刊<span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu" role="menu">-->
+                        <!--<li><a href="#">编程狂人</a></li>-->
+                        <!--<li><a href="#">设计匠艺</a></li>-->
+                        <!--<li><a href="#">创业周刊</a></li>-->
+                        <!--<li><a href="#">科技周刊</a></li>-->
+                        <!--<li><a href="#">Guru weekly</a></li>-->
+                        <!--<li><a href="#">一周拾遗</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-if="!user"><a ui-sref="login">登录</a></li>
+                <li class="dropdown" ng-if="user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">个人中心<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ng-click="ctl.logOut()">退出登录</a></li>
+                        <li><a ui-sref="user">个人主页</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>

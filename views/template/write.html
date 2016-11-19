@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="/lib/Editor/css/mditor.min.css" />
+<div class="write-box-title has-success">
+    <input class="write-input-title form-control"
+            type="text"
+            placeholder="请先写个标题"
+            ng-model="views.title">
+    <!-- 一级下拉框 -->
+</div>
+
+<textarea name="editor" id="editor" />
+<div class="write-box-title has-success">
+    <div class="btn-group write-btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+            {{views.category}}<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu theme-color" role="menu">
+            <li  ng-repeat="item in views.categoryList">
+                <a class="theme-color" ng-click="views.typeList = views.categoryList[$index].type; views.category = item.name">{{item.name}}</a>
+            </li>
+        </ul>
+    </div>
+    <!-- 二级下拉框 -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+            {{views.type}}<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li ng-repeat="item in views.typeList">
+                <a class="theme-color" ng-click="views.type = item">{{item}}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<form action="/upload" id="imgForm" method="post" enctype="multipart/form-data">
+    <a class="btn_addPic" href="javascript:void(0);">
+        <span><em>+</em>添加图片</span>
+        <input class="filePrew" id="fileInput" type="file"  onchange="onChange()"  multiple/>
+    </a>
+    <p id="fileName"></p>
+</form>
+<button onclick="showImg(files)">确定</button>
+<li ><span></span></li>
+<div id="imgDiv"></div>
+<div id="canvasDiv"></div>
+<canvas id="tCanvas"></canvas>
+<div class="write-box-submit">
+    <button class="btn btn-success" ng-click="req.editArticle()" ng-if="ctl.isEdit">修改</button>
+    <button class="btn btn-success" ng-click="req.postArticle()" ng-if="!ctl.isEdit">提交</button>
+</div>
+<script src="/js/upload.js"></script>
+<script src="/lib/Editor/js/mditor.min.js"></script>
+<script>
+    var mditor = new Mditor("#editor",{
+        height:600,
+        fixedHeight:true
+    });
+</script>

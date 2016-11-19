@@ -1,0 +1,16 @@
+.form-signin{
+	width: 30%;
+	margin: 10% auto;
+}
+input{
+	margin-bottom: 20px;
+}
+h1{
+	margin-bottom: 20px;
+	text-align: center;
+}
+body{
+	background-image: url(../images/bg1.jpg);
+	background-position:center;
+	background-repeat: no-repeat;
+}
