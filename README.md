@@ -1,4 +1,30 @@
-*** 待开发
+Eemu-blog说明
+===========
+
+1.先确保本地安装了node和Mongodb
+
+2.将项目clone(或者download ZIP)下来之后，使用cmd命令，CD到项目根目录，npm install安装依赖的模块,此过程比较久
+
+    $ cd  F:\Ermu-blog
+    $ npm install
+    
+3.新建一个blog文件夹，用来当作存放数据的文档(mongodb的做法，建议建在Mongodb的根目录下)，然后开启数据库服务
+
+    $ mongod --dbpath C:\mongodb\blog
+    
+4.cd到Ermu-blog项目根目录，执行npm start
+
+    $ cd  F:\Ermu-blog
+    $ npm start
+    
+5.在浏览器输入localhost:3000，完美运行
+
+
+
+
+
+待开发
+===========
 
 1. 根据标签查询文章
 
@@ -11,7 +37,8 @@
 5. 增加一个吉他谱显示的页面，可以自动滚动那种
 
 
-*** 待修正
+待修正
+============
 
 1. 用户信息存在服务端的session中，cookie由服务端生成
 
@@ -26,3 +53,6 @@
 6. 和数据库的connection有点不对劲，研究下
 
 7. 把代码托管带github上面
+
+
+
